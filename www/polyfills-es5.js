@@ -4399,20 +4399,6 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 
 /***/ }),
 
-/***/ 1:
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** multi ./node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js ./node_modules/@angular-devkit/build-angular/src/webpack/es5-jit-polyfills.js ./src/polyfills.ts ***!
-  \****************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */"voQr");
-__webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/node_modules/@angular-devkit/build-angular/src/webpack/es5-jit-polyfills.js */"aYjs");
-module.exports = __webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/src/polyfills.ts */"hN/g");
-
-
-/***/ }),
-
 /***/ "14Sl":
 /*!******************************************************************************!*\
   !*** ./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js ***!
@@ -4649,6 +4635,20 @@ $({ target: 'Reflect', stat: true, sham: !FREEZING }, {
     }
   }
 });
+
+
+/***/ }),
+
+/***/ 2:
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** multi ./node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js ./node_modules/@angular-devkit/build-angular/src/webpack/es5-jit-polyfills.js ./src/polyfills.ts ***!
+  \****************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */"voQr");
+__webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/node_modules/@angular-devkit/build-angular/src/webpack/es5-jit-polyfills.js */"aYjs");
+module.exports = __webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/src/polyfills.ts */"hN/g");
 
 
 /***/ }),
@@ -15406,5 +15406,5 @@ $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES, sham: !FREEZING }
 
 /***/ })
 
-},[[1,"runtime"]]]);
+},[[2,"runtime"]]]);
 //# sourceMappingURL=polyfills-es5.js.map

@@ -12,6 +12,17 @@ module.exports = __webpack_require__(/*! /Users/blastproductions/Sites/app_ionic
 
 /***/ }),
 
+/***/ 1:
+/*!************************!*\
+  !*** crypto (ignored) ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
 /***/ "AytR":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -57,8 +68,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "54vc");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "VYYF");
-/* harmony import */ var _API_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./API.service */ "iO9l");
-
 
 
 
@@ -67,38 +76,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, splashScreen, statusBar, apiService) {
+    function AppComponent(platform, splashScreen, statusBar) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
-        this.apiService = apiService;
         this.initializeApp();
     }
-    AppComponent.prototype.createTodo = function () {
-        this.apiService.CreateTodo({
-            name: 'ionic',
-            description: 'testing'
-        });
-    };
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
-            _this.apiService.ListTodos().then(function (evt) {
-                _this.todos = evt.items;
-            });
-            _this.apiService.OnCreateTodoListener.subscribe(function (evt) {
-                var data = evt.value.data.onCreateTodo;
-                _this.todos = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(_this.todos, [data]);
-            });
         });
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"] },
-        { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"] },
-        { type: _API_service__WEBPACK_IMPORTED_MODULE_7__["APIService"] }
+        { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"] }
     ]; };
     AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -123,7 +117,7 @@ var AppComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-button (click)=\"createTodo()\">Add Data</ion-button>\n  <ion-list>\n    <ion-item *ngFor=\"let item of todos\">\n      <p>{{item.name}} - {{item.description}}</p>\n    </ion-item>\n  </ion-list>\n</ion-app>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n\n<!--\n<ion-app>\n  <ion-button (click)=\"createTodo()\">Add Data</ion-button>\n  <ion-list>\n    <ion-item *ngFor=\"let item of todos\">\n      <p>{{item.name}} - {{item.description}}</p>\n    </ion-item>\n  </ion-list>\n</ion-app>\n-->");
 
 /***/ }),
 
@@ -172,163 +166,6 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "iO9l":
-/*!********************************!*\
-  !*** ./src/app/API.service.ts ***!
-  \********************************/
-/*! exports provided: ModelAttributeTypes, APIService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModelAttributeTypes", function() { return ModelAttributeTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APIService", function() { return APIService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @aws-amplify/api-graphql */ "Vh5H");
-
-/* tslint:disable */
-/* eslint-disable */
-//  This file was automatically generated and should not be edited.
-
-
-var ModelAttributeTypes;
-(function (ModelAttributeTypes) {
-    ModelAttributeTypes["binary"] = "binary";
-    ModelAttributeTypes["binarySet"] = "binarySet";
-    ModelAttributeTypes["bool"] = "bool";
-    ModelAttributeTypes["list"] = "list";
-    ModelAttributeTypes["map"] = "map";
-    ModelAttributeTypes["number"] = "number";
-    ModelAttributeTypes["numberSet"] = "numberSet";
-    ModelAttributeTypes["string"] = "string";
-    ModelAttributeTypes["stringSet"] = "stringSet";
-    ModelAttributeTypes["_null"] = "_null";
-})(ModelAttributeTypes || (ModelAttributeTypes = {}));
-var APIService = /** @class */ (function () {
-    function APIService() {
-        this.OnCreateTodoListener = _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])("subscription OnCreateTodo {\n        onCreateTodo {\n          __typename\n          id\n          name\n          description\n          createdAt\n          updatedAt\n        }\n      }"));
-        this.OnUpdateTodoListener = _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])("subscription OnUpdateTodo {\n        onUpdateTodo {\n          __typename\n          id\n          name\n          description\n          createdAt\n          updatedAt\n        }\n      }"));
-        this.OnDeleteTodoListener = _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])("subscription OnDeleteTodo {\n        onDeleteTodo {\n          __typename\n          id\n          name\n          description\n          createdAt\n          updatedAt\n        }\n      }"));
-    }
-    APIService.prototype.CreateTodo = function (input, condition) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var statement, gqlAPIServiceArguments, response;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        statement = "mutation CreateTodo($input: CreateTodoInput!, $condition: ModelTodoConditionInput) {\n        createTodo(input: $input, condition: $condition) {\n          __typename\n          id\n          name\n          description\n          createdAt\n          updatedAt\n        }\n      }";
-                        gqlAPIServiceArguments = {
-                            input: input
-                        };
-                        if (condition) {
-                            gqlAPIServiceArguments.condition = condition;
-                        }
-                        return [4 /*yield*/, _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])(statement, gqlAPIServiceArguments))];
-                    case 1:
-                        response = (_a.sent());
-                        return [2 /*return*/, response.data.createTodo];
-                }
-            });
-        });
-    };
-    APIService.prototype.UpdateTodo = function (input, condition) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var statement, gqlAPIServiceArguments, response;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        statement = "mutation UpdateTodo($input: UpdateTodoInput!, $condition: ModelTodoConditionInput) {\n        updateTodo(input: $input, condition: $condition) {\n          __typename\n          id\n          name\n          description\n          createdAt\n          updatedAt\n        }\n      }";
-                        gqlAPIServiceArguments = {
-                            input: input
-                        };
-                        if (condition) {
-                            gqlAPIServiceArguments.condition = condition;
-                        }
-                        return [4 /*yield*/, _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])(statement, gqlAPIServiceArguments))];
-                    case 1:
-                        response = (_a.sent());
-                        return [2 /*return*/, response.data.updateTodo];
-                }
-            });
-        });
-    };
-    APIService.prototype.DeleteTodo = function (input, condition) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var statement, gqlAPIServiceArguments, response;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        statement = "mutation DeleteTodo($input: DeleteTodoInput!, $condition: ModelTodoConditionInput) {\n        deleteTodo(input: $input, condition: $condition) {\n          __typename\n          id\n          name\n          description\n          createdAt\n          updatedAt\n        }\n      }";
-                        gqlAPIServiceArguments = {
-                            input: input
-                        };
-                        if (condition) {
-                            gqlAPIServiceArguments.condition = condition;
-                        }
-                        return [4 /*yield*/, _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])(statement, gqlAPIServiceArguments))];
-                    case 1:
-                        response = (_a.sent());
-                        return [2 /*return*/, response.data.deleteTodo];
-                }
-            });
-        });
-    };
-    APIService.prototype.GetTodo = function (id) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var statement, gqlAPIServiceArguments, response;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        statement = "query GetTodo($id: ID!) {\n        getTodo(id: $id) {\n          __typename\n          id\n          name\n          description\n          createdAt\n          updatedAt\n        }\n      }";
-                        gqlAPIServiceArguments = {
-                            id: id
-                        };
-                        return [4 /*yield*/, _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])(statement, gqlAPIServiceArguments))];
-                    case 1:
-                        response = (_a.sent());
-                        return [2 /*return*/, response.data.getTodo];
-                }
-            });
-        });
-    };
-    APIService.prototype.ListTodos = function (filter, limit, nextToken) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var statement, gqlAPIServiceArguments, response;
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        statement = "query ListTodos($filter: ModelTodoFilterInput, $limit: Int, $nextToken: String) {\n        listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {\n          __typename\n          items {\n            __typename\n            id\n            name\n            description\n            createdAt\n            updatedAt\n          }\n          nextToken\n        }\n      }";
-                        gqlAPIServiceArguments = {};
-                        if (filter) {
-                            gqlAPIServiceArguments.filter = filter;
-                        }
-                        if (limit) {
-                            gqlAPIServiceArguments.limit = limit;
-                        }
-                        if (nextToken) {
-                            gqlAPIServiceArguments.nextToken = nextToken;
-                        }
-                        return [4 /*yield*/, _aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["default"].graphql(Object(_aws_amplify_api_graphql__WEBPACK_IMPORTED_MODULE_2__["graphqlOperation"])(statement, gqlAPIServiceArguments))];
-                    case 1:
-                        response = (_a.sent());
-                        return [2 /*return*/, response.data.listTodos];
-                }
-            });
-        });
-    };
-    APIService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: "root"
-        })
-    ], APIService);
-    return APIService;
 }());
 
 

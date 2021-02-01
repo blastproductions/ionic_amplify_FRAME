@@ -4244,19 +4244,6 @@ module.exports = function (it, TAG, STATIC) {
 
 /***/ }),
 
-/***/ 2:
-/*!**********************************************************************************************************!*\
-  !*** multi ./src/polyfills.ts ./node_modules/@angular-devkit/build-angular/src/webpack/jit-polyfills.js ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/src/polyfills.ts */"hN/g");
-module.exports = __webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/node_modules/@angular-devkit/build-angular/src/webpack/jit-polyfills.js */"rZy+");
-
-
-/***/ }),
-
 /***/ "2oRo":
 /*!**************************************************!*\
   !*** ./node_modules/core-js/internals/global.js ***!
@@ -4277,6 +4264,19 @@ module.exports =
   check(typeof global == 'object' && global) ||
   // eslint-disable-next-line no-new-func
   (function () { return this; })() || Function('return this')();
+
+
+/***/ }),
+
+/***/ 3:
+/*!**********************************************************************************************************!*\
+  !*** multi ./src/polyfills.ts ./node_modules/@angular-devkit/build-angular/src/webpack/jit-polyfills.js ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /Users/blastproductions/Sites/app_ionic/myAmplifyProject/node_modules/@angular-devkit/build-angular/src/webpack/jit-polyfills.js */"rZy+");
 
 
 /***/ }),
@@ -7273,5 +7273,5 @@ module.exports = function (key, value) {
 
 /***/ })
 
-},[[2,"runtime"]]]);
+},[[3,"runtime"]]]);
 //# sourceMappingURL=polyfills.js.map
